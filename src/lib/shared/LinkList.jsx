@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 export function LinkList({
   links = [
     { id: 1, name: "Home", url: "#home" },
@@ -6,13 +8,31 @@ export function LinkList({
     { id: 4, name: "Blog", url: "#blog" },
   ],
 }) {
+  // get the scroll position
+  const [scrollPosition, setScrollPosition] = useState(0);
+  // set the scroll position
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   onload = () => {
     const bgBox = document.querySelector("#bgBox");
     bgBox.style.pointerEvents = "none";
     // read url for #id and set link to active
     const url = window.location.href;
     const name = url.split("#")[1];
+    console.log(name);
     const link = document.querySelector(`a[href="#${name}"]`);
+
     link.classList.add("text-blue-500");
     bgBox.style.transform = `translateX(${link.parentElement.offsetLeft}px)`;
     bgBox.style.width = `${link.offsetWidth}px`;
@@ -35,7 +55,7 @@ export function LinkList({
     <ul className="group relative flex flex-wrap items-center justify-around gap-5 text-slate-600 hover:text-slate-900">
       <div
         id="bgBox"
-        className="absolute left-0 h-7 w-16 rounded bg-blue-500 opacity-5 transition-all"
+        className="absolute left-0 top-[26px] h-[2px] rounded bg-blue-500 transition-all"
       ></div>
       {links.map((link) => (
         <li key={link.id} className="transition-transform">
