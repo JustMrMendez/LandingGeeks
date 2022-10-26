@@ -1,4 +1,8 @@
 import { Card } from "../shared/Card";
+import img1 from "../../public/1.jpg";
+import img2 from "../../public/2.jpg";
+import img3 from "../../public/3.jpg";
+import img4 from "../../public/4.jpg";
 
 export default function Services() {
   return (
@@ -10,10 +14,11 @@ export default function Services() {
         We provide the best services
       </p>
       <div className="mt-5 flex w-full flex-wrap justify-center md:gap-5 lg:gap-10">
-        <Card img="/source/1.jpg" />
-        <Card img="/source/2.jpg" />
-        <Card img="/source/3.jpg" />
-        <Card img="/source/4.jpg" />
+        <Card img={img1} />
+        <Card img={img2} />
+        <Card img={img3} />
+        <Card img={img4} />
+        <img src="" alt="" />
       </div>
     </section>
   );
