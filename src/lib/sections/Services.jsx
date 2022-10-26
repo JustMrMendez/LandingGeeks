@@ -10,10 +10,10 @@ export default function Services() {
         We provide the best services
       </p>
       <div className="mt-5 flex w-full flex-wrap justify-center md:gap-5 lg:gap-10">
-        <Card img="src/source/1.jpg" />
-        <Card img="src/source/2.jpg" />
-        <Card img="src/source/3.jpg" />
-        <Card img="src/source/4.jpg" />
+        <Card img="/source/1.jpg" />
+        <Card img="/source/2.jpg" />
+        <Card img="/source/3.jpg" />
+        <Card img="/source/4.jpg" />
       </div>
     </section>
   );
